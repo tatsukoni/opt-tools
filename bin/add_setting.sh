@@ -34,5 +34,7 @@ if [ $count -eq 0 ]; then
     notRegisterTag $tag
 fi
 # add setting.
-echo "$tag || $tool ($link)" >> setting.txt
+serialNumber=`sed '1,4d' setting.txt | cut -d: -f 1 | sort -n | tail -n 1`
+let serialNumber=serialNumber+1
+echo "$serialNumber: $tag || $tool ($link)" >> setting.txt
 echo 'success to add settings.'
