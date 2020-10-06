@@ -17,7 +17,7 @@ fi
 
 # execute
 echo "start register tag. tag: $tag"
-cd $HOME/Desktop/memo/tool/editor/vscode/
+cd $HOME/memo/tool/editor/vscode/
 # judge tag
 for registered_tag in `sed '1,2d' register_tag.txt`
 do

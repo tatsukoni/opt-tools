@@ -20,7 +20,7 @@ fi
 
 # execute
 echo "start add settings. tag: $tag, tool: $tool"
-cd $HOME/Desktop/memo/tool/editor/vscode/
+cd $HOME/memo/tool/editor/vscode/
 # if tag is not registered, proccess is not execured.
 count=0
 for registered_tag in `sed '1,2d' register_tag.txt`
