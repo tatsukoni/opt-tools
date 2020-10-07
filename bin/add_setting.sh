@@ -10,6 +10,11 @@ notRegisterTag () {
     exit 1
 }
 
+# too see https://qiita.com/koara-local/items/2d67c0964188bba39e29
+cd $(dirname $0)
+source ../etc/setting.conf
+settingPath=$SETTING_PATH
+
 tag=$1
 tool=$2
 link=$3
@@ -20,7 +25,7 @@ fi
 
 # execute
 echo "start add settings. tag: $tag, tool: $tool"
-cd $HOME/memo/tool/editor/vscode/
+cd $SETTING_PATH
 # if tag is not registered, proccess is not execured.
 count=0
 for registered_tag in `sed '1,2d' register_tag.txt`

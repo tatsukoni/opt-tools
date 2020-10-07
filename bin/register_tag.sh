@@ -10,6 +10,10 @@ alreadyRegister () {
     exit 1
 }
 
+cd $(dirname $0)
+source ../etc/setting.conf
+settingPath=$SETTING_PATH
+
 tag=$1
 if [ -z $tag ]; then
     notEnoughAugument
@@ -17,7 +21,7 @@ fi
 
 # execute
 echo "start register tag. tag: $tag"
-cd $HOME/memo/tool/editor/vscode/
+cd $settingPath
 # judge tag
 for registered_tag in `sed '1,2d' register_tag.txt`
 do

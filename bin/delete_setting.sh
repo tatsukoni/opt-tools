@@ -9,6 +9,10 @@ notExistTarget () {
     exit 2
 }
 
+cd $(dirname $0)
+source ../etc/setting.conf
+settingPath=$SETTING_PATH
+
 deleteNumber=$1
 if [ $# -ne 1 ]; then
     notEnoughAugument
@@ -16,7 +20,7 @@ fi
 
 # execute
 echo "start delete settings. delete_serial_number: $deleteNumber"
-cd $HOME/memo/tool/editor/vscode/
+cd $settingPath
 targetDelete=`cat setting.txt | grep "^$deleteNumber: .*"`
 if [ -z "$targetDelete" ]; then
     notExistTarget $deleteNumber
