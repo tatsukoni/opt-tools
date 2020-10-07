@@ -12,6 +12,7 @@ notExistTarget () {
 cd $(dirname $0)
 source ../etc/setting.conf
 settingPath=$SETTING_PATH
+settingFile=$SETTING_FILE_NAME
 
 deleteNumber=$1
 if [ $# -ne 1 ]; then
@@ -21,19 +22,19 @@ fi
 # execute
 echo "start delete settings. delete_serial_number: $deleteNumber"
 cd $settingPath
-targetDelete=`cat setting.txt | grep "^$deleteNumber: .*"`
+targetDelete=`cat "$settingFile" | grep "^$deleteNumber: .*"`
 if [ -z "$targetDelete" ]; then
     notExistTarget $deleteNumber
 fi
 
 # delete target setting.
-targetDeleteLine=`nl -b a setting.txt | grep "$targetDelete" | cut -f 1 | sed 's/^ *//g'`
+targetDeleteLine=`nl -b a "$settingFile" | grep "$targetDelete" | cut -f 1 | sed 's/^ *//g'`
 echo -n "start to delete $targetDelete. Are you OK? y/n"
 read answer
 if [ $answer = 'y' ]; then
-    cat setting.txt | sed "$targetDeleteLine"'d' > tmp_setting.txt
-    rm -f setting.txt
-    mv tmp_setting.txt setting.txt
+    cat $settingFile | sed "$targetDeleteLine"'d' > tmp_setting.txt
+    rm -f $settingFile
+    mv tmp_setting.txt $settingFile
     echo "success to delete settings."
 else
     echo "not executed."

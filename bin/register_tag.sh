@@ -13,6 +13,7 @@ alreadyRegister () {
 cd $(dirname $0)
 source ../etc/setting.conf
 settingPath=$SETTING_PATH
+registerTagFile=$REGISTER_TAG_FILE_NAME
 
 tag=$1
 if [ -z $tag ]; then
@@ -23,12 +24,12 @@ fi
 echo "start register tag. tag: $tag"
 cd $settingPath
 # judge tag
-for registered_tag in `sed '1,2d' register_tag.txt`
+for registered_tag in `sed '1,2d' "$registerTagFile"`
 do
     if [ $tag = $registered_tag ]; then
         alreadyRegister $tag
     fi
 done
 # register
-echo $tag >> register_tag.txt
+echo $tag >> $registerTagFile
 echo 'success to register.'

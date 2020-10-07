@@ -14,6 +14,8 @@ notRegisterTag () {
 cd $(dirname $0)
 source ../etc/setting.conf
 settingPath=$SETTING_PATH
+settingFile=$SETTING_FILE_NAME
+registerTagFile=$REGISTER_TAG_FILE_NAME
 
 tag=$1
 tool=$2
@@ -28,7 +30,7 @@ echo "start add settings. tag: $tag, tool: $tool"
 cd $SETTING_PATH
 # if tag is not registered, proccess is not execured.
 count=0
-for registered_tag in `sed '1,2d' register_tag.txt`
+for registered_tag in `sed '1,2d' "$registerTagFile"`
 do
     if [ $tag = $registered_tag ]; then
         let count=count+1
@@ -39,7 +41,7 @@ if [ $count -eq 0 ]; then
     notRegisterTag $tag
 fi
 # add setting.
-serialNumber=`sed '1,4d' setting.txt | cut -d: -f 1 | sort -n | tail -n 1`
+serialNumber=`sed '1,4d' "$settingFile" | cut -d: -f 1 | sort -n | tail -n 1`
 let serialNumber=serialNumber+1
-echo "$serialNumber: $tag || $tool ($link)" >> setting.txt
+echo "$serialNumber: $tag || $tool ($link)" >> $settingFile
 echo 'success to add settings.'
