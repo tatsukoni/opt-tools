@@ -27,7 +27,7 @@ fi
 
 # execute
 echo "start add settings. tag: $tag, tool: $tool"
-cd $SETTING_PATH
+cd $settingPath
 # if tag is not registered, proccess is not execured.
 count=0
 for registered_tag in `sed '1,2d' "$registerTagFile"`
