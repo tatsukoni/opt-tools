@@ -11,7 +11,7 @@ alreadyRegister () {
 }
 
 cd $(dirname $0)
-source ../etc/setting.conf
+source ../../etc/setting.conf
 settingPath=$SETTING_PATH
 registerTagFile=$REGISTER_TAG_FILE_NAME
 

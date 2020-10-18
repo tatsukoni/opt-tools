@@ -12,7 +12,7 @@ notRegisterTag () {
 
 # too see https://qiita.com/koara-local/items/2d67c0964188bba39e29
 cd $(dirname $0)
-source ../etc/setting.conf
+source ../../etc/setting.conf
 settingPath=$SETTING_PATH
 settingFile=$SETTING_FILE_NAME
 registerTagFile=$REGISTER_TAG_FILE_NAME

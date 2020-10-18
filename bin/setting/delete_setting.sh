@@ -10,7 +10,7 @@ notExistTarget () {
 }
 
 cd $(dirname $0)
-source ../etc/setting.conf
+source ../../etc/setting.conf
 settingPath=$SETTING_PATH
 settingFile=$SETTING_FILE_NAME
 
