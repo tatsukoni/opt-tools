@@ -23,8 +23,7 @@ do
         # change current file
         mv "$lotatePath/$target" "$lotatePath/$today-$target"
         # create new file
+        # bashで実行しないと(子シェルを起動しないと)、create.shでパスが引き継がれてしまう
         bash ../create/create.sh $target
-    else
-        echo "not execute"
     fi
 done
